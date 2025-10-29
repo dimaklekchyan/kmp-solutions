@@ -1,5 +1,3 @@
-import com.vanniktech.maven.publish.SonatypeHost
-
 plugins {
     alias(libs.plugins.jetbrains.kotlin.multiplatform)
     alias(libs.plugins.android.library)
@@ -75,12 +73,12 @@ publishing.publications
 
         pom {
             name = "KFilePicker"
-            url = "https://github.com/dimaklekchyan/KFilePicker"
+            url = "https://github.com/dimaklekchyan/kmp-solutions"
             description = "It is a kotlin multiplatform library for file picking on android and iOS"
 
             issueManagement {
                 system = "GitHub"
-                url = "https://github.com/dimaklekchyan/KFilePicker/issues"
+                url = "https://github.com/dimaklekchyan/kmp-solutions/issues"
             }
 
             licenses {
@@ -91,9 +89,9 @@ publishing.publications
             }
 
             scm {
-                connection = "scm:git:git://github.com/dimaklekchyan/KFilePicker.git"
-                developerConnection = "scm:git:ssh://github.com/dimaklekchyan/KFilePicker.git"
-                url = "https://github.com/dimaklekchyan/KFilePicker"
+                connection = "scm:git:git://github.com/dimaklekchyan/kmp-solutions.git"
+                developerConnection = "scm:git:ssh://github.com/dimaklekchyan/kmp-solutions.git"
+                url = "https://github.com/dimaklekchyan/kmp-solutions"
             }
 
             developers {
@@ -118,8 +116,7 @@ publishing {
     }
 }
 
-// https://vanniktech.github.io/gradle-maven-publish-plugin/central
 mavenPublishing {
-    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = false)
+    publishToMavenCentral(automaticRelease = false)
     signAllPublications()
 }
