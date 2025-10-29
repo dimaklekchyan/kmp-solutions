@@ -3,7 +3,7 @@
 
 ---
 
-Kmp-solutions is a set of useful kotlin multiplatform libraries available for Android and iOS.
+Kmp-solutions is a set of useful kotlin multiplatform libraries.
 
 ### Supported platforms
 

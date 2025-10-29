@@ -15,14 +15,14 @@ expect class KFilePickerController {
 /**
  * Creates a [KFilePickerController] to pick single file
  * @param type the type that determines the selection of files. See [KFilePickerType]
- * @param persistFile bookmark file on iOS and take persistable uri on Android if true.
+ * @param persistFile bookmark file on iOS and take persistable uri on Android if true. False by default.
  * @param stateProvider the callback to be called when file picker has any state. See [KFilePickerState]
  * @return the controller that can be used to launch the native picker.
  * */
 @Composable
 expect fun rememberSingleFilePickerController(
     type: KFilePickerType = KFilePickerType.All,
-    persistFile: Boolean = true,
+    persistFile: Boolean = false,
     stateProvider: (KFilePickerState) -> Unit,
 ): KFilePickerController
 
@@ -30,14 +30,14 @@ expect fun rememberSingleFilePickerController(
  * Creates a [KFilePickerController] to pick multiple files
  * @param type the type that determines the selection of files. See [KFilePickerType]
  * @param maxItems the max amount of picked files. [Int.MAX_VALUE] by default.
- * @param persistFile bookmark file on iOS and take persistable uri on Android if true.
+ * @param persistFile bookmark file on iOS and take persistable uri on Android if true. False by default.
  * @param stateProvider the callback to be called when file picker has any state. See [KFilePickerState]
  * @return the controller that can be used to launch the native picker.
  * */
 @Composable
 expect fun rememberMultipleFilesPickerController(
     type: KFilePickerType = KFilePickerType.All,
-    persistFile: Boolean = true,
+    persistFile: Boolean = false,
     maxItems: Int = Int.MAX_VALUE,
     stateProvider: (KFilePickerState) -> Unit,
 ): KFilePickerController

@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 
 /**
  * Creates a [KFilePickerController] to pick single image
- * @param persistFile bookmark file on iOS and take persistable uri on Android if true.
+ * @param persistFile bookmark file on iOS and take persistable uri on Android if true. False by default.
  * @param onDone the callback to be called when image picked
  * @param onPreparing the callback to be called when preparing started
  * @param onException the callback to be called when exception occurred
@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
  * */
 @Composable
 fun rememberSingleImagePickerController(
-    persistFile: Boolean = true,
+    persistFile: Boolean = false,
     onDone: (KPickedFile.Image) -> Unit,
     onPreparing: () -> Unit = {},
     onException: (Exception) -> Unit = {}
@@ -37,7 +37,8 @@ fun rememberSingleImagePickerController(
 
 /**
  * Creates a [KFilePickerController] to pick multiple images
- * @param persistFile bookmark file on iOS and take persistable uri on Android if true.
+ * @param persistFile bookmark file on iOS and take persistable uri on Android if true. False by default.
+ * @param maxItems the max amount of picked images. [Int.MAX_VALUE] by default.
  * @param onDone the callback to be called when images picked
  * @param onPreparing the callback to be called when preparing started
  * @param onException the callback to be called when exception occurred
@@ -45,7 +46,7 @@ fun rememberSingleImagePickerController(
  * */
 @Composable
 fun rememberMultipleImagesPickerController(
-    persistFile: Boolean = true,
+    persistFile: Boolean = false,
     maxItems: Int = Int.MAX_VALUE,
     onDone: (List<KPickedFile.Image>) -> Unit,
     onPreparing: () -> Unit = {},

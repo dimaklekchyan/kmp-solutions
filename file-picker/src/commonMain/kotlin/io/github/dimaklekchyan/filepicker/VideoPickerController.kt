@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 
 /**
  * Creates a [KFilePickerController] to pick single video
- * @param persistFile bookmark file on iOS and take persistable uri on Android if true.
+ * @param persistFile bookmark file on iOS and take persistable uri on Android if true. False by default.
  * @param onDone the callback to be called when video picked
  * @param onPreparing the callback to be called when preparing started
  * @param onException the callback to be called when exception occurred
@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
  * */
 @Composable
 fun rememberSingleVideoPickerController(
-    persistFile: Boolean = true,
+    persistFile: Boolean = false,
     onDone: (KPickedFile.Video) -> Unit,
     onPreparing: () -> Unit = {},
     onException: (Exception) -> Unit = {}
@@ -37,7 +37,8 @@ fun rememberSingleVideoPickerController(
 
 /**
  * Creates a [KFilePickerController] to pick multiple videos
- * @param persistFile bookmark file on iOS and take persistable uri on Android if true.
+ * @param persistFile bookmark file on iOS and take persistable uri on Android if true. False by default.
+ * @param maxItems the max amount of picked videos. [Int.MAX_VALUE] by default.
  * @param onDone the callback to be called when videos picked
  * @param onPreparing the callback to be called when preparing started
  * @param onException the callback to be called when exception occurred
@@ -45,7 +46,7 @@ fun rememberSingleVideoPickerController(
  * */
 @Composable
 fun rememberMultipleVideosPickerController(
-    persistFile: Boolean = true,
+    persistFile: Boolean = false,
     maxItems: Int = Int.MAX_VALUE,
     onDone: (List<KPickedFile.Video>) -> Unit,
     onPreparing: () -> Unit = {},
