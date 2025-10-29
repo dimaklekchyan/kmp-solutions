@@ -6,5 +6,4 @@ Libraries support the following targets: `android`, `ios`.
 
 ## Overview
 
-<img src="../../docs/media/file_picker_android.png" width="512">
-<img src="../../docs/media/file_picker_ios.png" width="512">
+<img src="../../docs/media/file_picker_android.png" width="220" height="480"> <img src="../../docs/media/file_picker_ios.png" width="220" height="480">
