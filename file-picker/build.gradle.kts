@@ -1,0 +1,125 @@
+import com.vanniktech.maven.publish.SonatypeHost
+
+plugins {
+    alias(libs.plugins.jetbrains.kotlin.multiplatform)
+    alias(libs.plugins.android.library)
+    `maven-publish`
+    alias(libs.plugins.vanniktechMavenPublish)
+    alias(libs.plugins.jetbrains.compose)
+    alias(libs.plugins.jetbrains.compose.plugin)
+    alias(libs.plugins.swiftklib)
+}
+
+group = "io.github.dimaklekchyan"
+version = "0.0.1"
+
+kotlin {
+    androidTarget {
+        publishLibraryVariants("release")
+        withSourcesJar(publish = true)
+    }
+
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.binaries.framework {
+            baseName = "KFilePicker"
+        }
+        it.compilations {
+            val main by getting {
+                cinterops {
+                    create("previewProvider")
+                }
+            }
+        }
+    }
+    jvmToolchain(8)
+
+    sourceSets {
+        commonMain.dependencies {
+            implementation(compose.foundation)
+            implementation(compose.runtime)
+        }
+        androidMain.dependencies {
+            implementation(libs.androidx.activity.compose)
+        }
+    }
+}
+
+android {
+    namespace = "io.github.dimaklekchyan"
+    compileSdk = 36
+    defaultConfig {
+        minSdk = 23
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+}
+
+swiftklib {
+    create("previewProvider") {
+        path = file("native/previewProvider")
+        packageName("io.github.dimaklekchyan")
+    }
+}
+
+publishing.publications
+    .withType<MavenPublication>()
+    .configureEach {
+        groupId = project.group.toString()
+        version = project.version.toString()
+
+        pom {
+            name = "KFilePicker"
+            url = "https://github.com/dimaklekchyan/KFilePicker"
+            description = "It is a kotlin multiplatform library for file picking on android and iOS"
+
+            issueManagement {
+                system = "GitHub"
+                url = "https://github.com/dimaklekchyan/KFilePicker/issues"
+            }
+
+            licenses {
+                license {
+                    name = "The Apache Software License, Version 2.0"
+                    url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            }
+
+            scm {
+                connection = "scm:git:git://github.com/dimaklekchyan/KFilePicker.git"
+                developerConnection = "scm:git:ssh://github.com/dimaklekchyan/KFilePicker.git"
+                url = "https://github.com/dimaklekchyan/KFilePicker"
+            }
+
+            developers {
+                developer {
+                    id = "dimaklekchyan"
+                    name = "Dima Klekchyan"
+                    email = "dima.klekchyan@gmail.com"
+                }
+            }
+        }
+    }
+
+publishing {
+    publications {
+        repositories {
+            mavenLocal()
+
+            maven(url = uri(rootProject.layout.buildDirectory.file("maven-repo"))) {
+                name = "BuildDir"
+            }
+        }
+    }
+}
+
+// https://vanniktech.github.io/gradle-maven-publish-plugin/central
+mavenPublishing {
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = false)
+    signAllPublications()
+}

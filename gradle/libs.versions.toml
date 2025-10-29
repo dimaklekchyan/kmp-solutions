@@ -1,0 +1,26 @@
+[versions]
+agp = "8.6.1"
+kotlin = "2.1.10"
+vanniktech = "0.31.0-rc2"
+swiftklib = "0.6.4"
+compose-multiplatform = "1.9.0"
+androidx-activityCompose = "1.9.0"
+androidx-fragment = "1.8.9"
+coreKtx = "1.8.0"
+
+[libraries]
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+androidx-fragment = { module = "androidx.fragment:fragment-ktx", version.ref = "androidx-fragment" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+jetbrains-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
+jetbrains-compose-plugin = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+vanniktechMavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "vanniktech" }
+swiftklib = { id = "io.github.ttypic.swiftklib", version.ref = "swiftklib" }
+
