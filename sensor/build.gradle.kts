@@ -57,6 +57,7 @@ publishing.publications
         pom {
             name = "KSensor"
             url = "https://github.com/dimaklekchyan/kmp-solutions"
+            description = "It is a kotlin multiplatform library for obtaining information from device sensors."
 
             issueManagement {
                 system = "GitHub"

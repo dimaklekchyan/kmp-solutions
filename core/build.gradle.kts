@@ -56,6 +56,7 @@ publishing.publications
         pom {
             name = "KCore"
             url = "https://github.com/dimaklekchyan/kmp-solutions"
+            description = "It is a kotlin multiplatform library with useful utils"
 
             issueManagement {
                 system = "GitHub"
