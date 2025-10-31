@@ -21,10 +21,12 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.filePicker)
+            implementation(projects.sensor)
 
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
+            implementation(compose.materialIconsExtended)
         }
         androidMain.dependencies {
             implementation(libs.androidx.activity.compose)

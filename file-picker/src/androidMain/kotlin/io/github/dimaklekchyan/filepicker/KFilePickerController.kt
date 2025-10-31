@@ -13,13 +13,15 @@ import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresExtension
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
-import io.github.dimaklekchyan.filepicker.file.KFile
+import io.github.dimaklekchyan.core.KFile
 import java.io.File
+import java.lang.Integer.min
 
 actual class KFilePickerController(
     private val type: KFilePickerType,
@@ -63,8 +65,9 @@ actual fun rememberMultipleFilesPickerController(
     stateProvider: (KFilePickerState) -> Unit,
 ): KFilePickerController {
     val context = LocalContext.current
+    val safeMaxItems = remember(maxItems) { getSafeMaxItems(maxItems) }
     val launcher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.PickMultipleVisualMedia(maxItems),
+        contract = ActivityResultContracts.PickMultipleVisualMedia(safeMaxItems),
         onResult = { uriList ->
             stateProvider(KFilePickerState.Preparing)
             try {
@@ -77,6 +80,14 @@ actual fun rememberMultipleFilesPickerController(
     )
 
     return remember(type, launcher) { KFilePickerController(type, launcher) }
+}
+
+private fun getSafeMaxItems(maxItems: Int): Int {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        min(maxItems, MediaStore.getPickImagesMaxLimit())
+    } else {
+        min(maxItems, 50)
+    }
 }
 
 private fun Context.prepareFile(

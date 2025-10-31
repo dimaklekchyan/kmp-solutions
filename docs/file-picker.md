@@ -3,13 +3,12 @@ Under the hood the library uses LauncherForActivityResult with PickVisualMedia c
 
 ## Preview
 
-<img src="../../docs/media/file_picker_android.png" width="220" height="480"> <img src="../../docs/media/file_picker_ios.png" width="220" height="480">
+<img src="media/file_picker_android.png" width="220" height="480"> <img src="media/file_picker_ios.png" width="220" height="480">
 
 ## Overview
 Here are some key concepts of the library.
 
-* [KFile](../../file-picker/src/commonMain/kotlin/io/github/dimaklekchyan/filepicker/file/KFile.kt) - a wrapper over native file
-* [KPickedFile](../../file-picker/src/commonMain/kotlin/io/github/dimaklekchyan/filepicker/KFilePickerController.kt) - represents an image or video class with file and preview properties
+* [KPickedFile](../file-picker/src/commonMain/kotlin/io/github/dimaklekchyan/filepicker/KFilePickerController.kt) - represents an image or video class with file and preview properties
 
 ## Installation
 
@@ -18,7 +17,7 @@ project **build.gradle.kts**
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation("io.github.dimaklekchyan:file-picker:0.0.1")
+            implementation("io.github.dimaklekchyan:file-picker:0.1.0")
         }
     }
 }
@@ -73,5 +72,5 @@ fun Sample() {
 ```
 
 ## Samples
-More examples can be found in the [sample directory](../../sample/shared/src/commonMain/kotlin/io/github/dimaklekchyan/sample/shared/Sample.kt).
+More examples can be found in the [sample directory](../sample/shared/src/commonMain/kotlin/io/github/dimaklekchyan/sample/shared/Sample.kt).
 

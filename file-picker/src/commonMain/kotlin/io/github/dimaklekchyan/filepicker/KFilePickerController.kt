@@ -2,7 +2,7 @@ package io.github.dimaklekchyan.filepicker
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.ImageBitmap
-import io.github.dimaklekchyan.filepicker.file.KFile
+import io.github.dimaklekchyan.core.KFile
 
 /**
  * A controller to launch native file picker.

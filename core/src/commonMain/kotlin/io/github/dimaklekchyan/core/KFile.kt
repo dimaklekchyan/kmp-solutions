@@ -1,4 +1,4 @@
-package io.github.dimaklekchyan.filepicker.file
+package io.github.dimaklekchyan.core
 
 expect class KFile {
     fun name(): String

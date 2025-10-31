@@ -5,7 +5,6 @@ plugins {
     alias(libs.plugins.vanniktechMavenPublish)
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.jetbrains.compose.plugin)
-    alias(libs.plugins.swiftklib)
 }
 
 group = "io.github.dimaklekchyan"
@@ -23,14 +22,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "KFilePicker"
-        }
-        it.compilations {
-            val main by getting {
-                cinterops {
-                    create("previewProvider")
-                }
-            }
+            baseName = "KSensor"
         }
     }
     jvmToolchain(17)
@@ -41,14 +33,11 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.runtime)
         }
-        androidMain.dependencies {
-            implementation(libs.androidx.activity.compose)
-        }
     }
 }
 
 android {
-    namespace = "io.github.dimaklekchyan.file_picker"
+    namespace = "io.github.dimaklekchyan.sensor"
     compileSdk = 36
     defaultConfig {
         minSdk = 23
@@ -59,13 +48,6 @@ android {
     }
 }
 
-swiftklib {
-    create("previewProvider") {
-        path = file("native/previewProvider")
-        packageName("io.github.dimaklekchyan")
-    }
-}
-
 publishing.publications
     .withType<MavenPublication>()
     .configureEach {
@@ -73,9 +55,8 @@ publishing.publications
         version = project.version.toString()
 
         pom {
-            name = "KFilePicker"
+            name = "KSensor"
             url = "https://github.com/dimaklekchyan/kmp-solutions"
-            description = "It is a kotlin multiplatform library for file picking on android and iOS"
 
             issueManagement {
                 system = "GitHub"

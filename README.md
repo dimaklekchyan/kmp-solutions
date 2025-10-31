@@ -11,4 +11,6 @@ Libraries support the following targets: `android`, `ios`.
 
 ## Overview
 
-* [FilePicker](docs/file-picker/file-picker.md) - library for file picking on android and iOS
+* [Core](docs/core.md) - core library with utils
+* [FilePicker](docs/file-picker.md) - library for file picking
+* [Sensor](docs/sensor.md) - library for obtaining information from device sensors

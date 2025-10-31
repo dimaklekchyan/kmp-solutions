@@ -1,4 +1,4 @@
-package io.github.dimaklekchyan.filepicker.file
+package io.github.dimaklekchyan.core
 
 import platform.Foundation.NSFileHandle
 import platform.Foundation.NSURL

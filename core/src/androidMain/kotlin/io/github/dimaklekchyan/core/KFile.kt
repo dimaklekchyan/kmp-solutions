@@ -1,9 +1,8 @@
-package io.github.dimaklekchyan.filepicker.file
+package io.github.dimaklekchyan.core
 
 import android.os.Build
 import android.webkit.MimeTypeMap
 import java.io.File
-import java.io.FileInputStream
 import java.nio.file.Files
 
 actual class KFile(val file: File) {

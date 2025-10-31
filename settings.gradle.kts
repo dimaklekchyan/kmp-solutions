@@ -15,6 +15,8 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "KFilePicker"
+include(":core")
 include(":file-picker")
+include(":sensor")
 include(":sample:app-android")
 include(":sample:shared")
