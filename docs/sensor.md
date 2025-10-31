@@ -16,7 +16,7 @@ kotlin {
 A sensor which provides device orientation in three planes: pitch, roll, yaw. 
 Please note that angles are calculated in the coordinate system used in aviation.
 
-<img src="../../docs/media/sensor.png" width="480" height="480">
+<img src="media/orientation.png" width="480" height="480">
 
 ### Planes. Values are positive when rotating clockwise.
 * pitch - a rotation around a lateral axis. Range of values [-180, 180]
